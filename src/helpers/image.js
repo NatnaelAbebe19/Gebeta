@@ -27,7 +27,7 @@ export const CachedImage = (props) => {
           setChachedSource({ uri: base64Data });
         }
       } catch (error) {
-        console.log("Errpr caching image: ", error);
+        console.log("Error caching image: ", error);
         setChachedSource({ uri });
       }
     };
