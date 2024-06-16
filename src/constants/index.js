@@ -22,7 +22,7 @@ export const mealData = [
     image: require("../../assets/ቀይ ወጥ.png"),
   },
   {
-    name: "Kitfo",
+    name: "Kitfo ",
     image: require("../../assets/ክትፎ.png"),
   },
   {
