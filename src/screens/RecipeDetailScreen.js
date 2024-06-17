@@ -1,4 +1,12 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Button,
+  StyleSheet,
+  Alert,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { CachedImage } from "../helpers/image";
@@ -115,22 +123,40 @@ export default function RecipeDetailScreen(props) {
       ) : (
         <View className="px-4 flex justify-between space-y-4 pt-8">
           {/* name and area */}
+
           <Animated.View
             entering={FadeInDown.duration(700).springify().damping(12)}
-            className="space-y-2"
+            className="space-y-2 "
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+            }}
           >
-            <Text
-              style={{ fontSize: hp(3) }}
-              className="font-bold flex-1 text-neutral-700 "
+            <View className="space-y-2 ">
+              <Text
+                style={{ fontSize: hp(3) }}
+                className="font-bold flex-1 text-neutral-700 "
+              >
+                {meal?.strMeal}
+              </Text>
+              <Text
+                style={{ fontSize: hp(2) }}
+                className="font-bold flex-1 text-neutral-500 "
+              >
+                {meal?.strArea}
+              </Text>
+            </View>
+            <View
+              onPress={() => {
+                console.log("On the way home");
+              }}
             >
-              {meal?.strMeal}
-            </Text>
-            <Text
-              style={{ fontSize: hp(2) }}
-              className="font-bold flex-1 text-neutral-500 "
-            >
-              {meal?.strArea}
-            </Text>
+              <Text className="bg-[#ccc] text-black p-2 px-4 font-extrabold rounded-full">
+                Order now
+              </Text>
+            </View>
           </Animated.View>
 
           {/* misc */}
