@@ -148,15 +148,15 @@ export default function RecipeDetailScreen(props) {
                 {meal?.strArea}
               </Text>
             </View>
-            <View
+            <TouchableOpacity
               onPress={() => {
-                console.log("On the way home");
+                navigation.navigate("Order");
               }}
             >
               <Text className="bg-[#ccc] text-black p-2 px-4 font-extrabold rounded-full">
                 Order now
               </Text>
-            </View>
+            </TouchableOpacity>
           </Animated.View>
 
           {/* misc */}
