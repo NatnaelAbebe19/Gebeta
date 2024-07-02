@@ -6,12 +6,14 @@ import {
   Button,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { useNavigation } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
 
 export default function OrderScreen() {
   const [address, setAddress] = useState("");
@@ -25,18 +27,34 @@ export default function OrderScreen() {
 
   const handleSubmit = () => {
     // Handle the form submission logic here
-    console.log({
-      address,
-      name,
-      fatherName,
-      phoneNumber,
-      email,
-      paymentMethod,
+    if (
+      address === "" ||
+      name === "" ||
+      fatherName === "" ||
+      email === "" ||
+      paymentMethod === ""
+    ) {
+      Alert.alert("Error", "All fields are required");
+      return;
+    }
+
+    Toast.show({
+      type: "success",
+      text1: "Ordered Successfully!",
+      text2: "Enjoy your meal!🍔",
+      position: "bottom",
     });
+    setPaymentMethod("");
+    setAddress("");
+    setName("");
+    setFatherName("");
+    setEmail("");
+    setPhoneNumber("");
   };
 
   return (
     <View style={styles.container}>
+      <Toast className="z-50" />
       <Text className="text-3xl font-bold mt-8">Order it, Now!</Text>
       <Animated.View
         entering={FadeIn.delay(200).duration(1000)}
