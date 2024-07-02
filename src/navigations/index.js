@@ -7,7 +7,7 @@ import RecipeDetailScreen from "../screens/RecipeDetailScreen";
 import OrderScreen from "../screens/OrderScreen";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
-
+import Logout from "../screens/Logout";
 const Stack = createNativeStackNavigator();
 
 function AppNavigation() {
@@ -23,6 +23,7 @@ function AppNavigation() {
         <Stack.Screen name="Order" component={OrderScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Logout" component={Logout} />
       </Stack.Navigator>
     </NavigationContainer>
   );

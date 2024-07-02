@@ -18,11 +18,12 @@ import axios from "axios";
 import Recipes from "../components/Recipes";
 import { useNavigation } from "@react-navigation/native";
 
-export default function HomeScreen() {
+export default function HomeScreen({ route }) {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
-
+  const username = route.params?.params?.username;
+  console.log(route);
   useEffect(() => {
     getCategories();
     getRecipes();
@@ -70,7 +71,9 @@ export default function HomeScreen() {
       >
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Login");
+            username
+              ? navigation.navigate("Logout", { params: { username } })
+              : navigation.navigate("Login");
           }}
           className="mx-4 flex-row justify-between items-center mb-2"
         >
@@ -81,8 +84,11 @@ export default function HomeScreen() {
           <BellIcon size={hp(4)} color="gray" />
         </TouchableOpacity>
         <View className="mx-4 space-y-2 mb-2">
-          <Text style={{ fontSize: hp(1.7) }} className="text-neutral-600">
-            Hello Natnael
+          <Text
+            style={{ fontSize: hp(2.1) }}
+            className="text-neutral-600 font-bold"
+          >
+            Hello <Text className="text-xl text-amber-400">{username}</Text>
           </Text>
           <View>
             <Text

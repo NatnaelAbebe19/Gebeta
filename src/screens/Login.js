@@ -13,14 +13,18 @@ import Animated, { FadeIn } from "react-native-reanimated";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import Toast from "react-native-toast-message";
-
+import { Stack, useRouter } from "expo-router";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const router = useRouter();
+  // const { username = "", setUsername = () => {} } = route.params || {};
+  const test = "test";
+  console.log(username);
 
   const handleLogin = () => {
-    if (username === "" || password === "") {
+    if (password === "" || username === "") {
       Alert.alert("Error", "All fields are required");
       return;
     }
@@ -31,8 +35,10 @@ const Login = () => {
       text2: "Enjoy your meal!🍔",
       position: "bottom",
     });
-
-    setTimeout(() => navigation.goBack(), 2500);
+    console.log("Ready to gp");
+    setTimeout(() => {
+      navigation.navigate("Home", { params: { username } });
+    }, 2500);
   };
 
   return (
@@ -43,7 +49,9 @@ const Login = () => {
         className="w-full absolute top-8 flex-row justify-between items-center pt-1 "
       >
         <TouchableOpacity
-          onPress={() => navigation.goBack()}
+          onPress={() => {
+            navigation.goBack();
+          }}
           className="p-2 rounded-full ml-5 bg-white"
         >
           <ChevronLeftIcon size={hp(3.5)} strokeWidth={4.5} color="#fbbf24" />

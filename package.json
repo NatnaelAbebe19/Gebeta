@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "axios": "^1.7.2",
     "expo": "~51.0.14",
+    "expo-router": "^3.5.17",
     "expo-status-bar": "~1.12.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
