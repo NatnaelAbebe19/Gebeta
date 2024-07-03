@@ -23,12 +23,22 @@ export default function HomeScreen({ route }) {
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
   const username = route.params?.params?.username;
+
+  const [isMounted, setIsMounted] = useState(false);
+
   console.log(route);
   useEffect(() => {
+    // Set the flag to true when the component mounts
+    setIsMounted(true);
+
     getCategories();
     getRecipes();
+
+    // Cleanup function to set the flag to false when the component unmounts
+    return () => {
+      setIsMounted(false);
+    };
   }, []);
 
   const handleChangeCategory = (category) => {

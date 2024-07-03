@@ -13,12 +13,10 @@ import Animated, { FadeIn } from "react-native-reanimated";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import Toast from "react-native-toast-message";
-import { Stack, useRouter } from "expo-router";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
-  const router = useRouter();
   // const { username = "", setUsername = () => {} } = route.params || {};
   const test = "test";
   console.log(username);
