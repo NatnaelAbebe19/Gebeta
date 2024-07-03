@@ -22,6 +22,8 @@ export default function HomeScreen({ route }) {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const username = route.params?.params?.username;
   console.log(route);
   useEffect(() => {
